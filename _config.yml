@@ -1,0 +1,27 @@
+# ------------------------------------------------------------------
+# Site settings
+# ------------------------------------------------------------------
+title: ""            # Your blog's name (leave empty for now)
+description: ""      # One-line description, used by search engines
+
+# The site lives at https://mirskychar-blip.github.io/mirskychar/
+# If you ever rename the repository to mirskychar-blip.github.io,
+# change this to "" (empty).
+baseurl: "/mirskychar"
+url: "https://mirskychar-blip.github.io"
+
+# Post addresses look like /2026/12/01/my-post-title/
+permalink: /:year/:month/:day/:title/
+
+markdown: kramdown
+
+exclude:
+  - README.md
+
+# Every post automatically uses the post page design
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
