@@ -1,18 +1,20 @@
 :root {
   --text: #222;
-  --muted: #666;
   --bg: #fff;
-  --link: #0645ad;
+  --panel: #f6f6f6;
+  --ph: #dedede;        /* placeholder blocks */
   --border: #e5e5e5;
+  --accent: #b5b5b5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #e6e6e6;
-    --muted: #9a9a9a;
     --bg: #161616;
-    --link: #8ab4f8;
+    --panel: #1f1f1f;
+    --ph: #3a3a3a;
     --border: #333;
+    --accent: #555;
   }
 }
 
@@ -20,51 +22,119 @@
 
 body {
   margin: 0;
-  padding: 0 16px;
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
 }
 
-header, main, footer {
-  max-width: 680px;
+.wrap {
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 16px;
 }
 
-header {
+/* ---------- Header ---------- */
+.site-header { border-bottom: 1px solid var(--border); }
+
+.site-header .wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 8px;
-  padding: 24px 0;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 20px; }
+
+/* ---------- Two-column layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 48px;
+  padding-top: 40px;
+  padding-bottom: 56px;
+}
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar { display: flex; flex-direction: column; gap: 32px; }
+
+.widget {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.widget.author { text-align: center; }
+
+/* ---------- Main content ---------- */
+.post-item {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 20px;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
   border-bottom: 1px solid var(--border);
 }
 
-header .site-title {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--text);
-  text-decoration: none;
+@media (max-width: 560px) {
+  .post-item { grid-template-columns: 1fr; }
 }
 
-nav a { margin-left: 16px; }
-nav a:first-child { margin-left: 0; }
+.section { margin-top: 36px; }
 
-a { color: var(--link); }
-
-main { padding: 32px 0; }
-
-.post-list { list-style: none; padding: 0; }
-.post-list li { margin-bottom: 24px; }
-.post-list h2 { margin: 0; font-size: 1.2rem; }
-
-.date { color: var(--muted); font-size: 0.9rem; }
-
-footer {
-  padding: 24px 0;
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--panel);
   border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 0.9rem;
 }
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .footer-cols { grid-template-columns: 1fr; }
+}
+
+.footer-bottom {
+  padding-top: 16px;
+  padding-bottom: 24px;
+}
+
+/* ---------- Placeholder blocks (replace with real content later) ---------- */
+.ph {
+  background: var(--ph);
+  border-radius: 4px;
+  height: 12px;
+  margin-bottom: 10px;
+}
+.ph.logo     { width: 180px; height: 32px; margin: 0; }
+.ph.navlink  { width: 64px;  height: 12px; margin: 0; }
+.ph.title    { width: 60%;   height: 30px; margin-bottom: 20px; }
+.ph.subhead  { width: 35%;   height: 20px; margin-bottom: 14px; }
+.ph.short    { width: 70%; }
+.ph.thumb    { width: 100%; aspect-ratio: 4 / 3; height: auto; margin: 0; }
+.ph.photo    { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 16px; }
+.ph.hero     { width: 100%; aspect-ratio: 16 / 7; height: auto; margin-bottom: 24px; }
+.ph.portrait { width: 100%; aspect-ratio: 1; height: auto; margin: 0; }
+.ph.input    { height: 36px; background: var(--bg); border: 1px solid var(--border); }
+.ph.button   { height: 36px; background: var(--accent); margin-bottom: 0; }
+.ph.wtitle   { width: 50%; height: 16px; margin-bottom: 16px; }
+.ph.icon     { width: 28px; height: 28px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+
+/* About page intro: text beside the author photo */
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; align-items: start; }
+@media (max-width: 560px) { .intro { grid-template-columns: 1fr; } .intro .ph.portrait { order: -1; max-width: 220px; } }
