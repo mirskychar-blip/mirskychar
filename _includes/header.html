@@ -7,10 +7,9 @@
   </div>
   <div class="menu-bar">                       <!-- Menu bar -->
     <nav>
-      <a href="{{ '/about/' | relative_url }}"><div class="ph navlink"></div></a>
-      <div class="ph navlink"></div>
-      <div class="ph navlink"></div>
-      <div class="ph navlink"></div>
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Home</a>
+      <a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} class="active"{% endif %}>About</a>
+      <a href="{{ '/tax-calculator/' | relative_url }}"{% if page.url == '/tax-calculator/' %} class="active"{% endif %}>Tax Calculator</a>
     </nav>
   </div>
 </header>
