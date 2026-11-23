@@ -105,13 +105,6 @@ body {
 }
 .newsletter .ph { margin-left: auto; margin-right: auto; }
 
-.logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 0 20px;
-}
-
 /* ---------- Main content ---------- */
 .post-item {
   display: grid;
@@ -164,7 +157,6 @@ body {
 .ph.button    { height: 40px; background: var(--accent); }
 .ph.wtitle    { width: 55%; height: 18px; margin-bottom: 16px; }
 .ph.icon      { width: 44px; height: 44px; border-radius: 50%; margin: 0; background: var(--bg); border: 1px solid var(--accent); }
-.ph.logo-sm   { height: 22px; margin: 0; }
 
 @media (max-width: 560px) {
   .ph.logo { height: 60px; }
